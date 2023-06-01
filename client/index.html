@@ -9,6 +9,7 @@
     <script src="/js/initialize.js"></script>
     <script defer src="/js/components/signup.js"></script>
     <script defer src="/js/components/login.js"></script>
+    <script defer src="/js/components/getWeather.js"></script>
 
 
 </head>
@@ -18,6 +19,13 @@
             <button class="" onClick="renderSignUp()">signup</button>
             <button class="" onClick="renderLogin()">login</button>
     </nav>
+
+    <button onclick="getLocation()">Try It</button>
+
+            <p class="demo"></p>
+
+            <div class="data"></div>
     <main id="page" class="content"></main>
+
 </body>
 </html>
