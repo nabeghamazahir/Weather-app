@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
     .findByEmail(email)
     .then(user => {
       if (!user || email == '' || password == '') {
-        res.status(400).json({ error: 'email and/or password are incorrect' })
+        res.status(400).json({ error: 'Wrong Details, Please Try Again' })
       } else {
         // using bcrypt to validate the password:
         const isValidPassword = bcrypt.compareSync(password, user.password_digest)
@@ -38,5 +38,20 @@ router.get('/', (req, res) => {
     res.json({})
   }
 })
+
+router.delete('/', (req, res) => {
+    // set cookie to expire immediately
+    req.session.cookie.maxAge = 0;
+    // destroy session
+    req.session.destroy(err => {
+      if (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Could not logout' })
+      } else {
+        res.json({ success: true })
+      }
+    })
+  })
+  
 
 module.exports = router
