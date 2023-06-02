@@ -1,11 +1,8 @@
 var x = document.querySelector("demo");
 let div = document.querySelector(".data");
+
 let latitude;
 let longitude;
-
-
-
-let apiKey;
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -18,42 +15,38 @@ function getLocation() {
 function showPosition(position) {
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
+  const url = `/api/weather?longitude=${longitude}&latitude=${latitude}`;
 
-  fetch(
-    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${latitude},${longitude}`
-  )
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       temp = data.current.temp_c;
-      checkWeth(temp)
-
+      checkWeth(temp);
+      // Process the response data from the backend
       div.innerHTML = `
     <h2>${data.location.name}</h2>
     <img src="${data.current.condition.icon}">
-    <p>${data.current.temp_c} Celcius</p>
-
-    
-    `;
+    <p>${data.current.temp_c} Celcius</p>`;
     })
     .catch((error) => {
-      console.log("An error occurred while fetching the weather:", error);
+      // Handle any errors that occurred during the request
+      console.error("Error:", error);
     });
 }
 
 getLocation();
 
-
-function checkWeth(temp){
-    if(temp<15){
-        console.log('Winter')
-      }
-      
-      else if(temp>15 && temp<25){
-        console.log('Moderate')
-      }
-      
-      else if (temp>25){
-        console.log('Summer')
-      }
+function checkWeth(temp) {
+  if (temp < 15) {
+    console.log("Winter");
+  } else if (temp > 15 && temp < 25) {
+    console.log("Moderate");
+  } else if (temp > 25) {
+    console.log("Summer");
+  }
 }
