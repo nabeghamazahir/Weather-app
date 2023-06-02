@@ -2,9 +2,8 @@ var x = document.querySelector("demo");
 let div = document.querySelector(".data");
 let latitude;
 let longitude;
-
-
-const apiKey = 'aaa';
+let temp;
+const apiKey = "9035fa55557e4d5490955535233105";
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
