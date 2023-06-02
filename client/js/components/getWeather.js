@@ -4,7 +4,9 @@ let latitude;
 let longitude;
 
 
+
 let apiKey;
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
