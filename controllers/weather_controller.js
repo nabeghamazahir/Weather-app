@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const fetch = require("node-fetch");
 const apiKey = process.env.weather_api_key
 
 router.get("/", (req, res) => {
