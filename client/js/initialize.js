@@ -1,5 +1,8 @@
 const state ={}
 
+
+
+
 fetch('/api/suggestions/top')
   .then(res => res.json())
   .then(tops => {
