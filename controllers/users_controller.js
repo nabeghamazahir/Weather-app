@@ -17,4 +17,5 @@ router.post('/', (req, res) => {
     .then(email => res.json(email))
 })
 
+
 module.exports = router
