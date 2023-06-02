@@ -12,15 +12,19 @@ if (process.env.DATABASE_URL) {
     }
   })
 } else {
+  
   if (process.env.DEV_DB_PASSWORD) {
     db = new pg.Pool({
       database: localDbName,
       password: process.env.DEV_DB_PASSWORD
+      
     })
   } else {
     db = new pg.Pool({
       database: localDbName
+      
     })
+    
   }
 }
 
