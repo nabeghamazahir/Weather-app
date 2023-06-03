@@ -12,6 +12,7 @@
     <script defer src="/js/components/log_out.js"></script>
     <script defer src="/js/components/getWeather.js"></script>
     <script src="js/components/suggestion.js"></script>
+    <script defer src="js/components/collection.js"></script>
     <link rel="stylesheet" href="./css/main.css">
 
 </head>
@@ -30,6 +31,17 @@
       <div id="tops"></div>
       <div id="bottoms"></div>
       <div id="shoes"></div>
+      <div class="controls">
+        <div class="save-collection">
+          <form action="" onSubmit=createCollection(event)>
+            <input type="text" name="collection_input" placeholder="Enter collection name...">
+            <button>Save Collection</button>
+        </form>
+        </div>
+        <div class="read-collection">
+          <select name="" id="drop-down"></select>
+        </div>
+      </div>
     </main>
   </body>
 </html>

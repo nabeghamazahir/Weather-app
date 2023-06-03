@@ -1,11 +1,11 @@
 const db = require('../db/db')
 
 const Bottom = {
-    findAll: () =>{
-        const sql = 'SELECT * FROM bottoms'
+    findAll: weather =>{
+        const sql = `SELECT * FROM bottoms WHERE weather=$1`
 
         return db
-            .query(sql)
+            .query(sql, [weather])
             .then(dbRes => dbRes.rows)
     }
 }
