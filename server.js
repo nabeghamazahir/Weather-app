@@ -9,7 +9,7 @@ const usersController =require('./controllers/users_controller')
 const sessionsController =require('./controllers/sessions_controller')
 const suggestionsController =require('./controllers/suggestions_controller')
 const weatherController =require('./controllers/weather_controller')
-
+const collectionController =require('./controllers/collections_controller')
 
 const app = express()
 const port = process.env.PORT || 3002;
@@ -26,3 +26,4 @@ app.use('/api/users', usersController)
 app.use('/api/sessions', sessionsController)
 app.use('/api/suggestions', suggestionsController)
 app.use('/api/weather',weatherController)
+app.use('/api/collection',collectionController)

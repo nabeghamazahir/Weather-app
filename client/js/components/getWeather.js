@@ -4,6 +4,8 @@ let div = document.querySelector(".data");
 let latitude;
 let longitude;
 
+let weather_type;
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -43,10 +45,12 @@ getLocation();
 
 function checkWeth(temp) {
   if (temp < 15) {
-    console.log("Winter");
+    weather_type = "winter";
   } else if (temp > 15 && temp < 25) {
-    console.log("Moderate");
+    weather_type = "moderate";
   } else if (temp > 25) {
-    console.log("Summer");
+    weather_type = "summer";
   }
+
+  init(weather_type)
 }
