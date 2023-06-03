@@ -6,6 +6,10 @@ let top_images;
 var top_currentIndex = 0;
 var top_imageElement;
 
+let shoe_images;
+var shoe_currentIndex = 0;
+var shoe_imageElement;
+
 function renderTopsList() {
     document.querySelector('#tops').innerHTML = `
         <section class="tops"> <div class="carousel">
@@ -36,18 +40,19 @@ function renderBottoms() {
 
 function renderShoesList() {
     document.querySelector('#shoes').innerHTML = `
-    <section class="shoes"> ${renderShoes()}</section>
-`
+        <section class="bottoms"> <div class="carousel">
+        <button class="carousel__btn carousel__btn--prev" onclick="shoe_prevImage()">&lt;</button>
+        <img id="shoe_carousel__image" src="" alt="Image">
+        <button class="carousel__btn carousel__btn--next" onclick="shoe_nextImage()">&gt;</button>
+      </div></section>
+    `
 }
 
 function renderShoes() {
-    return state.shoes.map(shoe => `
-    <div class="shoe" data-id='${shoe.id}'>
-        <img src= "${shoe.image_url}" alt="">
-    </div>
-    ` 
-    ).join('')
+    shoe_images = state.shoes;
 }
+
+// Bottom Carousel Logic
 
 function btm_showImage(index) {
     if (index >= 0 && index < bottom_images.length) {
@@ -90,7 +95,6 @@ function reveal_bottom_img(){
 }
 
 
-
 // Top Carousel Logic
 
 
@@ -131,4 +135,45 @@ function reveal_top_img(){
     top_imageElement = document.querySelector('#top_carousel__image');
     console.log(top_imageElement)
     top_imageElement.src = top_images[0]['image_url']
+}
+
+// Shoe Carousel Logic
+
+function shoe_showImage(index) {
+    if (index >= 0 && index < shoe_images.length) {
+      var imageUrl = shoe_images[index]['image_url'];
+      shoe_imageElement.src = imageUrl;
+      shoe_currentIndex = index;
+    }
+  }
+
+function shoe_prevImage() {
+  var prevIndex = shoe_currentIndex - 1;
+  if (prevIndex < 0) {
+    prevIndex = shoe_images.length - 1;
+  }
+  shoe_showImage(prevIndex);
+}
+
+function shoe_nextImage() {
+  var nextIndex = shoe_currentIndex + 1;
+  if (nextIndex >= shoe_images.length) {
+    nextIndex = 0;
+  }
+  shoe_showImage(nextIndex);
+}
+
+setTimeout(revealCarousel_shoe,1000)
+
+function revealCarousel_shoe(){
+    renderShoes()
+    console.log(shoe_images)
+    renderShoesList()
+    reveal_shoe_img()    
+}
+
+function reveal_shoe_img(){
+    shoe_imageElement = document.querySelector('#shoe_carousel__image');
+    console.log(shoe_imageElement)
+    shoe_imageElement.src = shoe_images[0]['image_url']
 }
