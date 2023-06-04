@@ -39,9 +39,9 @@ CREATE TABLE collections(
     bottom_id INT,
     shoe_id INT,
     FOREIGN KEY(user_id) REFERENCES users(id),
-    FOREIGN KEY(top_id) REFERENCES users(id),
-    FOREIGN KEY(bottom_id) REFERENCES users(id),
-    FOREIGN KEY(shoe_id) REFERENCES users(id)
+    FOREIGN KEY(top_id) REFERENCES tops(id),
+    FOREIGN KEY(bottom_id) REFERENCES bottoms(id),
+    FOREIGN KEY(shoe_id) REFERENCES shoes(id)
 );
 
 INSERT INTO tops(name, image_url, weather)
