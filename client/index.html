@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <script src="/js/initialize.js"></script>
-    <script defer src="/js/components/signup.js"></script>
-    <script defer src="/js/components/login.js"></script>
+    <script defer src="/js/initialize.js"></script>
+    <script src="/js/components/signup.js"></script>
+    <script src="/js/components/login.js"></script>
     <script defer src="/js/components/log_out.js"></script>
-    <script defer src="/js/components/getWeather.js"></script>
+    <script src="/js/components/getWeather.js"></script>
     <script src="js/components/suggestion.js"></script>
     <script defer src="js/components/collection.js"></script>
     <link rel="stylesheet" href="./css/main.css">
@@ -19,29 +19,17 @@
 <body>
     <h1>Weather App</h1>
     <nav class="header-nav">
-            <button class="" onClick="renderSignUp()">Signup</button>
-            <button class="" onClick="renderLogin()">Log In</button>
-            <button class="" onClick="renderLogout()">Log Out</button>
+            <button class="signup-btn" onClick="renderSignUp()">Signup</button>
+            <button class="login-btn" onClick="renderLogin()">Log In</button>
+            <button class="hidden logout-btn" onClick="logOut()">Log Out</button>
+            
     </nav>
 
     <p class="demo"></p>
 
     <div class="data"></div>
     <main id="page" class="content">
-      <div id="tops"></div>
-      <div id="bottoms"></div>
-      <div id="shoes"></div>
-      <div class="controls">
-        <div class="save-collection">
-          <form action="" onSubmit=createCollection(event)>
-            <input type="text" name="collection_input" placeholder="Enter collection name...">
-            <button>Save Collection</button>
-        </form>
-        </div>
-        <div class="read-collection">
-          <select name="" id="drop-down"></select>
-        </div>
-      </div>
+      
     </main>
   </body>
 </html>

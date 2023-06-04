@@ -1,4 +1,5 @@
 function renderLogin() {
+  div.style.display = 'none';
     document.querySelector('#page').innerHTML = `
       <section class='log-in'>
         <form action="" onSubmit="logIn(event)">
@@ -36,7 +37,11 @@ function renderLogin() {
           renderError(res.error)
         } else {
           state.loggedInUser = res
+          setTimeout(reloadPage, 1000);
+
+
         }
+      
       })
   }
   
@@ -45,3 +50,9 @@ function renderLogin() {
       `<h2 style='color: red;'>${errorMessage}</h2>` +
       document.querySelector('#page').innerHTML
   }
+
+
+function reloadPage(){
+  location.reload();
+  
+}

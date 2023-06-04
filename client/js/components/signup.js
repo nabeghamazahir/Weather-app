@@ -1,4 +1,6 @@
 function renderSignUp() {
+  div.style.display = 'none';
+  
     document.querySelector('#page').innerHTML = `
       <section class='sign-up'>
         <form action="" onSubmit="signUp(event)">
@@ -35,4 +37,5 @@ function renderSignUp() {
     })
     .then(res => res.json())
     .then(email => state.loggedInUser = email)
+    .then(renderLogin())
   }
