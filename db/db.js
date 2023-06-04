@@ -1,4 +1,6 @@
 const pg = require('pg')
+const Knex = require('knex');
+
 
 // change this to your actual local database name
 const localDbName = 'weather_app'
