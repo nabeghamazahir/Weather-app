@@ -1,10 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
-
 const Collection = require('../models/collection_model');
-const { use } = require("./collections_controller");
-
 
 router.post("/create", (req, res) => {
     const top_id = req.query.top_id;
@@ -28,12 +25,8 @@ router.post("/create", (req, res) => {
 
 
 router.get('/', (req, res)=> {
-
     const user_id = 1;
     Collection.findCollectionByUserId(user_id).then(user_id => res.json(user_id))
-
-
-
 
 }
 );
